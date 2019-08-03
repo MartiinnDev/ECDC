@@ -1,0 +1,22 @@
+div{
+  display: flex;
+  justify-content: center;
+}
+  img{
+    margin-top: 100px;
+    max-width: 500px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  canvas#canvas1 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  
+  canvas#canvas2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }

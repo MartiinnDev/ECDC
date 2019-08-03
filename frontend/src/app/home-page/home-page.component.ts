@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SmokeService } from '../_services/smoke.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _smokeService: SmokeService) { }
 
   ngOnInit() {
+    this._smokeService.start()
   }
 
 }

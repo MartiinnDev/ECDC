@@ -1,13 +1,6 @@
-<!-- <div style="margin-top: 40px;" class="container">
-    <div class="col-sm-8 offset-sm-2">
-      <p><strong>Usuario: </strong> {{ currentUser.username }}</p>
-      <p><strong>Nombre: </strong> {{ currentUser.firstName }}</p>
-      <p><strong>Apellidos: </strong> {{ currentUser.lastName }}</p>
-      <p><strong>Fecha Alta: </strong> {{ currentUser.createdDate | date }}</p> 
-    </div>
-</div> -->
 
-<div class="container">
+<br>
+<div class="container txt-white">
   <div class="row">
     <div style="margin-bottom: 10px;" class="col-sm-10"><h1>Perfil</h1></div>
   </div>
@@ -24,32 +17,45 @@
         </div>
         
       </div> <hr>
-      <ul class="list-group">
-          <li class="list-group-item text-right"><span class="pull-left"><strong>Usuario</strong></span> {{ currentUser.username | titlecase }}</li>
+      <ul class="list-group txt-black">
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Usuario</strong></span> {{ currentUser.username | titlecase }}</li>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Rol</strong></span> {{ currentUser.userRole | titlecase }}</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Comentarios</strong></span> XXX</li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Clase</strong></span> Triturbo Mariachi</li>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Valoración</strong></span> x/5</li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Comentarios</strong></span> XXX</li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Fotos subidas</strong></span> XXX</li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> XXX</li>
       </ul> 
       <br>
     </div>
     <div class="col-xs-9 col-sm-6">
-      <form class="form" action="##" method="post" id="registrationForm">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <div class="col-xs-6">
             <label for="first_name"><h5>Nombre:</h5></label>
-            <input type="text" class="form-control input-sm" name="firstname" id="firstname" placeholder="{{ currentUser.firstName }}" title="Introduce tu nombre.">
+            <input type="text" formControlName="firstName" placeholder="{{ this.currentUser?.firstName }}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">Introduce tu nombre</div>
+            </div>          
           </div>
         </div>
         <div class="form-group">
           <div class="col-xs-6">
             <label for="last_name"><h5>Apellido/s:</h5></label>
-            <input type="text" class="form-control input-sm" name="lastname" id="lastname" placeholder="{{ currentUser.lastName }}" title="Introduce tu apellido/s.">
+            <input type="text" formControlName="lastName"  placeholder="{{ this.currentUser?.lastName }}"class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Introduce tu apellido/s</div>
+            </div>          
           </div>
         </div>
         <div class="form-group">
           <div class="col-xs-6">
-            <label for="email"><h5>Email:</h5></label>
-            <input type="email" class="form-control input-sm" name="email" id="email" placeholder="you@email.com" title="Pon aqui tu Email.">
+            <label for="password">Contraseña:</label>
+                <input type="password" formControlName="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Contraseña obligatoria</div>
+                    <div *ngIf="f.password.errors.minlength">La contraseña debe tener almenos 6 caracteres</div>
+                </div>
           </div>
         </div>
         <!-- <div class="form-group">

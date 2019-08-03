@@ -51,6 +51,7 @@ async function create(userParam) {
 }
 
 async function update(id, userParam) {
+    console.log("user service back me da", id, userParam)
     const user = await User.findById(id);
 
     // validate

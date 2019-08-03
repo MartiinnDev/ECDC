@@ -22,6 +22,7 @@ import { RoleGuard } from './_guards/role.guard';
 import { CommentService } from './_services/comment_service';
 import { MentionPipe } from './_pipes/mention.pipe';
 import { FooterComponent } from './components/footer/footer.component';
+import { ConstructionPageComponent } from './construction-page/construction-page.component';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { FooterComponent } from './components/footer/footer.component';
         ProfilePageComponent,
         forumPageComponent,
         MentionPipe,
-        FooterComponent
+        FooterComponent,
+        ConstructionPageComponent
     ],
     providers: [
         AuthGuard,

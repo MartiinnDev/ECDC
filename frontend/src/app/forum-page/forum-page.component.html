@@ -1,6 +1,6 @@
 <div style="margin-top: 40px;" class="container">
   <div class="col-sm-8 offset-sm-2">
-    <h3>Foro</h3>
+    <h3 class="txt-white">Foro</h3>
     <br>
     <div class="comment-wrapper">
       <div class="panel panel-info">
@@ -22,12 +22,12 @@
                   {{ comment.content }}.
                 </p>
               </div>
-              <button *ngIf="identity?.userRole === 'admin'" (click)="deleteComment(comment._id)" [disabled]="!identity" class="btn btn-sm btn-error pull-right"><i class="fa fa-close"></i></button>
+              <button *ngIf="identity?.userRole === 'admin'" (click)="deleteComment(comment._id)" [disabled]="!identity" class="btn btn-sm pull-right"><i class="fa fa-close"></i></button>
             </li>
           </ul>
-            <h4>Añade un comentario</h4>
+            <h4 class="txt-white">Añade un comentario</h4>
             <div style="display: flex;" *ngIf="!identity">
-                <strong>Necesitas ser usuario para comentar</strong> 
+                <strong class="txt-white">Necesitas ser usuario para comentar</strong> 
                 <div style="margin-left: 10px;" class="buttons-container">
                   <a [routerLink]="['/login']" class="btn btn-sm btn-info">Entrar</a>
                   <a [routerLink]="['/register']" style="margin-left: 10px;" class="btn btn-sm btn-info">Registrarse</a>
@@ -35,7 +35,7 @@
             </div>
             <form *ngIf="identity" [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="comment-form">
               <div class="form-group">
-                <label for="title">Title:</label>
+                <label class="txt-white" for="title">Titulo:</label>
                 <input type="text" formControlName="title" class="form-control" name="title" placeholder="Titulo / asunto...">
               </div>
               <div class="form-group">

@@ -37,7 +37,8 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(`${this.AUTH_SERVER}/users/` + user.id, user);
+        console.log("esto recibo en user service front", user.id)
+        return this.http.put(`${this.AUTH_SERVER}/users/` + user.id, { firstName: user.firstName, lastName: user.lastName, password: user.password });
     }
 
     delete(id: number) {
